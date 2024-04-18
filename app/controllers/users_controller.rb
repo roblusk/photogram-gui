@@ -22,4 +22,13 @@ class UsersController < ApplicationController
 
     redirect_to("/users/#{u.id}")
   end
+
+  def update
+    user_id = params.fetch("user_id")
+    u = User.find(user_id)
+    u.username = params.fetch("username_input")
+    u.save
+
+    redirect_to("/users/#{u.id}")
+  end
 end
