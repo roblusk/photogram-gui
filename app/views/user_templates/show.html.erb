@@ -4,7 +4,7 @@
 <dd><%=@user.id%></dd>
 <dt>Edit user</dt>
 <dd>
-  <form method="post" action="/users/<%=@user.id%>">
+  <form method="post" action="/users/<%=@user.username%>">
     <label for="username_field">Username:</label>
     <input type="text" id="username_field" name="username_input" value="<%=@user.username%>">
     <button type="submit">Update user</button>

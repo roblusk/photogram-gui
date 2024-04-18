@@ -9,8 +9,8 @@ class UsersController < ApplicationController
   end
 
   def show
-    user_id = params.fetch("user_id")
-    @user = User.find(user_id)
+    username = params.fetch("username")
+    @user = User.where({ :username => username }).at(0)
 
     render({ :template => "user_templates/show" })
   end
@@ -20,15 +20,15 @@ class UsersController < ApplicationController
     u.username = params.fetch("username_input")
     u.save
 
-    redirect_to("/users/#{u.id}")
+    redirect_to("/users/#{u.username}")
   end
 
   def update
-    user_id = params.fetch("user_id")
-    u = User.find(user_id)
+    username = params.fetch("username")
+    u = User.where({ :username => username }).at(0)
     u.username = params.fetch("username_input")
     u.save
 
-    redirect_to("/users/#{u.id}")
+    redirect_to("/users/#{u.username}")
   end
 end
